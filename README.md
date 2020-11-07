@@ -1,3 +1,3 @@
 # Hi Stranger!
 
-![Geek Cat](https://media.giphy.com/media/pOKrXLf9N5g76/giphy.gif)
+![Geek Cat](http://gph.is/2gOOpoK)
