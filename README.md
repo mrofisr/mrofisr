@@ -1,3 +1,3 @@
 # Hi Stranger!
-
-![Geek Cat](http://gph.is/2gOOpoK)
+![Geek Cat](https://media.giphy.com/media/l0HlMmCTZsADKuIWQ/giphy.gif)
+## Stay humble and keep sharing 
