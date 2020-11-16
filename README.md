@@ -6,7 +6,6 @@
 <a href="https://dev.to/mrofisr" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg" alt="mrofisr" height="30" width="40" /></a>
 <a href="https://twitter.com/mrofisr_" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="mrofisr_" height="30" width="40" /></a>
 <a href="https://linkedin.com/in/mrofisr" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="mrofisr" height="30" width="40" /></a>
-<a href="https://medium.com/@mrofisr" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/medium.svg" alt="@mrofisr" height="30" width="40" /></a>
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
