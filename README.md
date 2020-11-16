@@ -3,7 +3,7 @@
 ![Hi](https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif)
 
 - 🌱 I’m currently learning and interest about **Python, Cloud Computing, DevOps/DevSecOps, InfoSec, and Radio Frequency**
-- 📝 I regulary write articles on [personal blog](https://mrofisr.my.id), [Medium](https://medium.com/@mrofisr), and [Dev](https://dev.to/mrofisr)
+- 📝 I regulary write articles on [Personal Blog](https://mrofisr.my.id), [Medium](https://medium.com/@mrofisr), and [Dev](https://dev.to/mrofisr)
 - 💬 Ask me about **Python, Cloud Computing**
 
 <h5>Connect with me:</h5>
