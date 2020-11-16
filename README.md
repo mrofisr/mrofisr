@@ -1,4 +1,8 @@
-<h1 align="center">Hi 👋, I'm Abdur Rofi</h1>
+## Hi Stranger!
+
+![Hi](https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif)
+
+<h2 align="center">I'm Abdur Rofi</h1>
 <h3 align="center">A passionate Python developer from Indonesia</h3>
 
 <h5 align="left">Connect with me:</h5>
