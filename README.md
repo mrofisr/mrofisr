@@ -1,2 +1,2 @@
 # Hi Stranger! 👋 
-![Geek Cat](https://media.giphy.com/media/l0HlMmCTZsADKuIWQ/giphy.gif)
+![Hi](https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif)
