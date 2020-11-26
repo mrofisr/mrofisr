@@ -1,6 +1,6 @@
 ## Hi Stranger! 👋 
 
-<a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2832/2832767.svg" align="right" height="150" /></a>
+<a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317981.svg" align="right" height="150" /></a>
 
 - 🌱 I’m currently learning and interest about **Python, Cloud Computing, DevOps/DevSecOps, InfoSec, and Radio Frequency**
 - 📝 I regulary write articles on [Personal Blog](https://mrofisr.my.id), [Medium](https://medium.com/@mrofisr), and [Dev](https://dev.to/mrofisr)
