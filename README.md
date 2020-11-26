@@ -16,4 +16,4 @@
 </p>
 
 ## Some of my Github Stats
-![JGamblin github stats](https://github-readme-stats.vercel.app/api?username=jgamblin&show_icons=true)
+![JGamblin github stats](https://github-readme-stats.vercel.app/api?username=mrofisr&show_icons=true)
