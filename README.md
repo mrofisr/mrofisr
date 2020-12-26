@@ -2,9 +2,8 @@
 
 <a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317981.svg" align="right" height="150" /></a>
 
-- 🌱 I’m currently learning and interest about **Python, Cloud Computing, DevOps/DevSecOps, InfoSec, and Radio Frequency**
+- 🌱 I’m student 🧑‍🎓 and I wanna be traveler 🚶‍♂️
 - 📝 I regulary write articles on [Personal Blog](https://mrofisr.my.id), [Medium](https://mrofisr.medium.com/), and [DEV Blog](https://dev.to/mrofisr)
-- 💬 Ask me about **Python, Cloud Computing**
 
 <h5>Connect with me:</h5>
 <p>
