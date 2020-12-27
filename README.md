@@ -3,7 +3,7 @@
 <!-- <a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317981.svg" align="right" height="150" /></a> -->
 <a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/3762/3762238.svg" align="right" height="150" /></a>
 
-- 🌱 I’m student 🧑‍🎓 and I wanna be traveler 🚶‍♂️
+- 🌱 I’m student 🧑‍🎓 
 - 📝 I regulary write articles on [Personal Blog](https://mrofisr.my.id), [Medium](https://mrofisr.medium.com/), and [DEV Blog](https://dev.to/mrofisr)
 
 <h5>Connect with me:</h5>
