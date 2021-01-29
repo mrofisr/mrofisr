@@ -1,6 +1,6 @@
 ## Hi Stranger! 👋 
 
-<!-- <a href="https://mrofisr.my.id"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317981.svg" align="right" height="150" /></a> -->
+<!-- <a href="https://mrofisr.github.io"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317981.svg" align="right" height="150" /></a> -->
 <a href="https://mrofisr.github.io"><img alt="nice hacker logo" src="https://www.flaticon.com/svg/static/icons/svg/3762/3762238.svg" align="right" height="150" /></a>
 
 - 🌱 I’m student 🧑‍🎓 
