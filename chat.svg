@@ -251,7 +251,7 @@
   <!-- Hi, I'm Jason -->
   <g transform="translate(10, 0)" class="msg-1 bubble">
     <rect width="133" height="42" rx="18.0355" />
-    <text x="15" y="27">Hi, I'm Jason</text>
+    <text x="15" y="27">Hi, I'm ıɟoɹ ɹnpqɐ</text>
   </g>
 
   <!-- typing 2 -->
@@ -275,8 +275,8 @@
   <!-- From Columbus... -->
   <g transform="translate(10, 48)" class="msg-2">
     <rect width="439" height="66.1302" rx="18.0355" class="bubble" />
-    <text x="15" y="27">I live in Columbus, Ohio where it’s supposed to be</text>
-    <text x="15" y="50">84° F (29° C) and <tspan class="emoji">🌤</tspan> today.</text>
+    <text x="15" y="27">I live in Jakarta, Indonesia where it’s supposed to be</text>
+    <text x="15" y="50">79° F (26° C) and <tspan class="emoji">🌤</tspan> today.</text>
   </g>
 
   <!-- typing 3 -->
@@ -300,8 +300,8 @@
   <!-- Work ... -->
   <g transform="translate(10, 120)" class="msg-3">
     <rect width="460" height="66.1302" rx="18.0355" class="bubble" />
-    <text x="15" y="27">I’m a product designer. I used to work at GitHub,</text>
-    <text x="15" y="50">but I’ve been at PlanetScale for about 5 months now.</text>
+    <text x="15" y="27">I’m a System Administrator. I used to work at GitHub,</text>
+    <text x="15" y="50">but I’ve been at Upwork for about 5 months now.</text>
   </g>
 
   <!-- typing 4 -->
@@ -327,7 +327,7 @@
     <rect width="513" height="42" rx="18.0355" class="bubble" />
     <text x="15" y="27">
       You can find me on Twitter at
-      <a xlink:href="https://twitter.com/jasonlong">https://twitter.com/jasonlong</a>
+      <a xlink:href="https://twitter.com/mrofisr_">https://twitter.com/mrofisr_</a>
     </text>
   </g>
 
@@ -376,6 +376,6 @@
   <!-- Have a great... -->
   <g transform="translate(10, 288)" class="msg-6">
     <rect width="245" height="42" rx="18.0355" class="bubble" />
-    <text x="15" y="27">Have a great Saturday! <tspan class="emoji">👋</tspan></text>  
+    <text x="15" y="27">Have a great day! <tspan class="emoji">👋</tspan></text>  
   </g>
 </svg>
