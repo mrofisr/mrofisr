@@ -250,7 +250,7 @@
 
   <!-- Hi, I'm Jason -->
   <g transform="translate(10, 0)" class="msg-1 bubble">
-    <rect width="200" height="42" rx="18.0355" />
+    <rect width="180" height="42" rx="18.0355" />
     <text x="15" y="27">Hi, I'm Abdur Rofi</text>
   </g>
 
@@ -274,7 +274,7 @@
 
   <!-- From Columbus... -->
   <g transform="translate(10, 48)" class="msg-2">
-    <rect width="439" height="66.1302" rx="18.0355" class="bubble" />
+    <rect width="450" height="66.1302" rx="18.0355" class="bubble" />
     <text x="15" y="27">I live in Jakarta, Indonesia where it’s supposed to be</text>
     <text x="15" y="50">79° F (26° C) and <tspan class="emoji">🌤</tspan> today.</text>
   </g>
@@ -299,7 +299,7 @@
 
   <!-- Work ... -->
   <g transform="translate(10, 120)" class="msg-3">
-    <rect width="460" height="66.1302" rx="18.0355" class="bubble" />
+    <rect width="500" height="66.1302" rx="18.0355" class="bubble" />
     <text x="15" y="27">I’m a System Administrator. I'm student at UIN Walisongo,</text>
     <text x="15" y="50">but I’ve been at Upwork for about 5 months now.</text>
   </g>
