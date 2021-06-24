@@ -300,8 +300,8 @@
   <!-- Work ... -->
   <g transform="translate(10, 120)" class="msg-3">
     <rect width="520" height="66.1302" rx="18.0355" class="bubble" />
-    <text x="15" y="27">I’m a System Administrator. I'm student at UIN Walisongo,</text>
-    <text x="15" y="50">but I’ve been at Upwork for about 5 months now.</text>
+    <text x="15" y="27">I'm student at UIN Walisongo.</text>
+    <text x="15" y="50">And I’m a System Administrator at Upwork for about 6 months now.</text>
   </g>
 
   <!-- typing 4 -->
@@ -327,7 +327,7 @@
     <rect width="525" height="42" rx="18.0355" class="bubble" />
     <text x="15" y="27">
       You can find me on Twitter at
-      <a xlink:href="https://twitter.com/mrofisr_">https://twitter.com/mrofisr_</a>
+      <a xlink:href="https://twitter.com/mrofisr_">here</a>
     </text>
   </g>
 
