@@ -1,9 +1,9 @@
-## hi folks 👋
+## Hi Folks 👋
 
-It's me, Muhammad **Abdur Rofi** Maulidin
-👀 Interest at automations process, cloud, kubernetes and container environtment.
-Keep in touch with me:
-- Telegram: [@mrofisr](https://t.me/@mrofisr)
-- LinkedIn: [@mrofisr](https://linkedin.com/in/mrofisr)
+I'm Muhammad **Abdur Rofi** Maulidin, a software engineer with a passion for automation, cloud computing, Kubernetes, and containerized environments.
 
-My resume: [look at here!](https://github.com/)
+Get in touch:
+* Telegram: [@mrofisr](https://t.me/@mrofisr)
+* LinkedIn: [@mrofisr](https://linkedin.com/in/mrofisr)
+
+My resume: [here!](https://docs.google.com/document/d/1MrNN7FVdeBrYz6cAPbFuX-bQrKRJcmVU/edit?usp=sharing&ouid=115101997489316475264&rtpof=true&sd=true)
