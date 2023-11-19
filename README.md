@@ -2,7 +2,7 @@
 
 I'm Muhammad **Abdur Rofi** Maulidin, a DevOps Engineer with a passion for Automation, Cloud Computing, Kubernetes, and Containerized.
 
-### Get in touch:
+### Reach me at:
 - ✈️ Telegram: [@mrofisr](https://t.me/@mrofisr)
 - 👥 LinkedIn: [@mrofisr](https://linkedin.com/in/mrofisr)
 - 📷 Instagram: [@mrofisr](https://instagram.com/mrofisr)
