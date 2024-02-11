@@ -1,6 +1,7 @@
 ## Hi Folks 👋
 
-I'm Muhammad **Abdur Rofi** Maulidin, a DevOps Engineer with interest about automation, cloud computing, kubernetes, and containerized.
+I'm Muhammad **Abdur Rofi** Maulidin, a Cloud Infra Engineer & Kubernetes Administrator.
+I write some technical blog on [my medium](https://mrofisr.medium.com/) 
 
 ### Reach me at:
 - ✈️ Telegram: [@mrofisr](https://t.me/@mrofisr)
