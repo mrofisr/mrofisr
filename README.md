@@ -1,7 +1,6 @@
 ## Hi Folks 👋
 
-I'm Muhammad **Abdur Rofi** Maulidin, a DevOps Engineer interest about Automations, Containerization, Kubernetes.
-I write some technical blog on [my Medium](https://mrofisr.medium.com/) in Bahasa, and I write at [Substack too](https://substack.com/@mrofisr).
+I'm Muhammad **Abdur Rofi** Maulidin, As a DevOps Engineer, I'm passionate about automations, containerization, and Kubernetes. I share my insights through technical blogs on [Medium](https://mrofisr.medium.com/) and [Substack](https://substack.com/@mrofisr), focusing on sharing my experience and delivering insights in Bahasa.
 
 ### Connect with me at:
 - 🐦 Twitter: [@mrofisr_](https://twitter.com/mrofisr_)
