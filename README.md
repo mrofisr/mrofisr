@@ -7,7 +7,7 @@ On-going project:
 - https://feedsshub.vercel.app
 - https://temantamanilmu.vercel.app
 - https://temancurhat.vercel.app
-- https://sinergikaryasolutif.vercel.app/
+- https://sinergikaryasolutif.vercel.app
 
 ### Connect with me at:
 - 🐦 Twitter: [@mrofisr_](https://twitter.com/mrofisr_)
