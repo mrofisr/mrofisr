@@ -1,6 +1,6 @@
 ## Hi Folks 👋
 
-I’m Muhammad **Abdur Rofi** Maulidin, a DevOps Wannabe to be interest with Cloud Computing, CNCF Tech, and Automations. I share my insights through technical blogs on [Medium](https://mrofisr.medium.com/) and [Substack](https://substack.com/@mrofisr), focusing on sharing my experience and delivering insights in Bahasa.
+I’m Muhammad **Abdur Rofi** Maulidin, a DevOps Wannabe to be interest with Cloud Computing, CNCF Tech, and Automations.
 
 ### Connect with me at:
 - 🐦 Twitter: [@mrofisr_](https://twitter.com/mrofisr_)
