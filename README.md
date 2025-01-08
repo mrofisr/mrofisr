@@ -1,7 +1,7 @@
 <div align="center">
   
   <!-- Profile Header with Dynamic Background -->
-  ![Header](https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=200&section=header&text=Abdur%20Rofi&fontSize=50&fontColor=FFFFFF&animation=fadeIn)
+  ![Header](https://capsule-render.vercel.app/api?type=waving&color=0:00C9FF,100:92FE9D&height=200&section=header&text=Hi%20Folks%20👋&fontSize=50&fontColor=FFFFFF&animation=fadeIn)
 
   <!-- Typing SVG -->
   [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=I'm+Abdur+Rofi;Software+Engineer;Cloud+Computing+Enthusiast&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000)](https://git.io/typing-svg)
