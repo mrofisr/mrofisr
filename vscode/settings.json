@@ -27,7 +27,6 @@
   "workbench.editor.decorations.badges": false,
   "workbench.iconTheme": "material-icon-theme",
   "editor.accessibilitySupport": "off",
-  "workbench.colorTheme": "Oscura",
   "workbench.editor.enablePreview": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "redhat.telemetry.enabled": false,
@@ -38,5 +37,23 @@
   "vs-kubernetes": {
     "vs-kubernetes.minikube-show-information-expiration": "2025-08-21T07:38:33.820Z"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "[typescript]": { // for .ts files
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": { // for .tsx files
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": { // apply ESLint
+    "source.fixAll.eslint": "always"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorTheme": "Oscura Midnight",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
