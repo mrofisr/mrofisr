@@ -1,10 +1,15 @@
 {
-  "editor.fontFamily": "'SF Mono', 'Fira Code'",
-  "editor.fontSize": 12,
+  "editor.fontFamily": "MesloLGM Nerd Font",
+  "editor.fontSize": 16,
+  "editor.fontWeight": "normal",
+  "editor.fontVariations": true,
+  "editor.fontLigatures": true,
   "editor.lineHeight": 1.6,
   "editor.minimap.enabled": false,
-  "editor.cursorBlinking": "phase",
-  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 3,
+  "editor.cursorSmoothCaretAnimation": "explicit",
   "editor.renderLineHighlight": "none",
   "editor.renderWhitespace": "none",
   "editor.hover.delay": 1500,
@@ -19,7 +24,7 @@
   "editor.occurrencesHighlight": "singleFile",
   "editor.selectionHighlight": false,
   "editor.folding": false,
-  "editor.lineNumbers": "off",
+  "editor.lineNumbers": "relative",
   "editor.hideCursorInOverviewRuler": true,
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.vertical": "hidden",
@@ -27,6 +32,9 @@
   "workbench.startupEditor": "none",
   "workbench.activityBar.location": "hidden",
   "workbench.statusBar.visible": false,
+  "zenMode.hideStatusBar": true,
+  "zenMode.silentNotifications": true,
+  "zenMode.showTabs": "multiple",
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": true,
   "zenMode.hideLineNumbers": true,
@@ -45,14 +53,11 @@
   "editor.accessibilitySupport": "off",
   "workbench.editor.enablePreview": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "redhat.telemetry.enabled": false,
-  "git.autofetch": true,
   "update.showReleaseNotes": false,
+  "git.autofetch": true,
+  "git.autorefresh": true,
   "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "vs-kubernetes": {
-    "vs-kubernetes.minikube-show-information-expiration": "2025-08-21T07:38:33.820Z"
-  },
+  "git.confirmSync": true,
   "[typescript]": { // for .ts files
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -60,3 +65,24 @@
   "[typescriptreact]": { // for .tsx files
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": { // apply ESLint
+    "source.fixAll.eslint": "always"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorTheme": "Oscura Midnight",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.menuBarVisibility": "compact",
+  "window.customTitleBarVisibility": "windowed",    
+}
