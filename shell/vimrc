@@ -1,17 +1,19 @@
 call plug#begin()
-
 Plug 'morhetz/gruvbox'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'branch': 'release/0.x'
   \ }
 Plug '907th/vim-auto-save'
-
+" Infrastructure & DevOps plugins
+Plug 'hashivim/vim-terraform'              " Terraform syntax highlighting and formatting
+Plug 'stephpy/vim-yaml'                    " Enhanced YAML support
+Plug 'pearofducks/ansible-vim'             " Ansible/YAML playbook support
+Plug 'ekalinin/Dockerfile.vim'             " Dockerfile syntax highlighting
+Plug 'chr4/nginx.vim'                      " Nginx configuration syntax
 call plug#end()
 
-
 " Vim settings based on VSCode configuration
-
 " Font settings (For terminal Vim, configure the terminal emulator font)
 " In Neovim, you can configure the font in your terminal emulator
 " set guifont=Meslo\LGM\Nerd\Font:h16
@@ -24,7 +26,7 @@ set cursorline       " Highlight the current line
 " Scrolling & view
 set nowrap           " Disable line wrapping
 set scrolloff=8      " Keep 8 lines above and below the cursor when scrolling
-set sidescroll=1     " Keep scrolling to the left at least 1 column
+set sidescroll=1     " Keep scrolling to the left at a time
 set scrolljump=3     " Scroll by 3 lines at a time
 
 " Search settings
@@ -101,3 +103,214 @@ set background=dark
 " Window settings (title bar customization)
 set titlestring=%F    " Show the full file path in the title
 set title             " Enable title bar
+
+" ============================================================================
+" INFRASTRUCTURE & DEVOPS CONFIGURATIONS
+" ============================================================================
+
+" Terraform Configuration
+augroup TerraformSettings
+    autocmd!
+    " File type detection for Terraform
+    autocmd BufRead,BufNewFile *.tf set filetype=terraform
+    autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
+    autocmd BufRead,BufNewFile *.tfstate set filetype=json
+    autocmd BufRead,BufNewFile *.tfplan set filetype=terraform
+
+    " Terraform-specific settings
+    autocmd FileType terraform setlocal commentstring=#\ %s
+    autocmd FileType terraform setlocal tabstop=2
+    autocmd FileType terraform setlocal shiftwidth=2
+    autocmd FileType terraform setlocal softtabstop=2
+    autocmd FileType terraform setlocal expandtab
+    autocmd FileType terraform setlocal autoindent
+    autocmd FileType terraform setlocal smartindent
+
+    " Auto-format Terraform files on save (requires terraform fmt in PATH)
+    autocmd BufWritePre *.tf :silent! !terraform fmt %
+    autocmd BufWritePost *.tf :edit
+augroup END
+
+" YAML Configuration (Kubernetes, Ansible, etc.)
+augroup YAMLSettings
+    autocmd!
+    " Enhanced YAML settings
+    autocmd FileType yaml setlocal tabstop=2
+    autocmd FileType yaml setlocal shiftwidth=2
+    autocmd FileType yaml setlocal softtabstop=2
+    autocmd FileType yaml setlocal expandtab
+    autocmd FileType yaml setlocal autoindent
+    autocmd FileType yaml setlocal indentkeys-=0#
+    autocmd FileType yaml setlocal indentkeys-=<:>
+
+    " Kubernetes YAML detection
+    autocmd BufRead,BufNewFile *.k8s.yaml set filetype=yaml
+    autocmd BufRead,BufNewFile *.k8s.yml set filetype=yaml
+    autocmd BufRead,BufNewFile kustomization.yaml set filetype=yaml
+
+    " Docker Compose detection
+    autocmd BufRead,BufNewFile docker-compose*.yml set filetype=yaml
+    autocmd BufRead,BufNewFile docker-compose*.yaml set filetype=yaml
+
+    " Ansible playbook detection
+    autocmd BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+    autocmd BufRead,BufNewFile */roles/*/tasks/*.yml set filetype=yaml.ansible
+    autocmd BufRead,BufNewFile site.yml set filetype=yaml.ansible
+
+    " GitHub Actions workflows
+    autocmd BufRead,BufNewFile .github/workflows/*.yml set filetype=yaml
+    autocmd BufRead,BufNewFile .github/workflows/*.yaml set filetype=yaml
+augroup END
+
+" JSON Configuration
+augroup JSONSettings
+    autocmd!
+    autocmd FileType json setlocal tabstop=2
+    autocmd FileType json setlocal shiftwidth=2
+    autocmd FileType json setlocal softtabstop=2
+    autocmd FileType json setlocal expandtab
+
+    " Format JSON on save (requires jq in PATH)
+    autocmd BufWritePre *.json :%!jq .
+augroup END
+
+" HCL Configuration (HashiCorp Configuration Language)
+augroup HCLSettings
+    autocmd!
+    autocmd BufRead,BufNewFile *.hcl set filetype=hcl
+    autocmd BufRead,BufNewFile *.nomad set filetype=hcl
+    autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+
+" Docker Configuration
+augroup DockerSettings
+    autocmd!
+    autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
+    autocmd BufRead,BufNewFile *.dockerfile set filetype=dockerfile
+    autocmd BufRead,BufNewFile .dockerignore set filetype=gitignore
+augroup END
+
+" Shell Script Configuration
+augroup ShellSettings
+    autocmd!
+    autocmd FileType sh setlocal tabstop=2
+    autocmd FileType sh setlocal shiftwidth=2
+    autocmd FileType sh setlocal softtabstop=2
+    autocmd FileType sh setlocal expandtab
+
+    " Bash completion and syntax
+    autocmd BufRead,BufNewFile *.bash set filetype=sh
+    autocmd BufRead,BufNewFile .bashrc set filetype=sh
+    autocmd BufRead,BufNewFile .bash_profile set filetype=sh
+augroup END
+
+" Configuration Files
+augroup ConfigSettings
+    autocmd!
+    " Nginx configuration
+    autocmd BufRead,BufNewFile */nginx/*.conf set filetype=nginx
+    autocmd BufRead,BufNewFile nginx.conf set filetype=nginx
+
+    " Apache configuration
+    autocmd BufRead,BufNewFile *.conf set filetype=apache
+    autocmd BufRead,BufNewFile httpd.conf set filetype=apache
+
+    " Environment files
+    autocmd BufRead,BufNewFile .env* set filetype=sh
+    autocmd BufRead,BufNewFile *.env set filetype=sh
+augroup END
+
+" ============================================================================
+" TERRAFORM-SPECIFIC ENHANCEMENTS
+" ============================================================================
+
+" Terraform vim-terraform plugin configuration
+let g:terraform_align = 1                    " Enable alignment
+let g:terraform_fold_sections = 1            " Enable code folding
+let g:terraform_fmt_on_save = 1              " Format on save
+
+" Custom Terraform key mappings
+nnoremap <leader>tf :TerraformFmt<CR>
+nnoremap <leader>tv :TerraformValidate<CR>
+nnoremap <leader>ti :TerraformInit<CR>
+nnoremap <leader>tp :TerraformPlan<CR>
+
+" ============================================================================
+" YAML-SPECIFIC ENHANCEMENTS
+" ============================================================================
+
+" YAML folding based on indentation
+autocmd FileType yaml setlocal foldmethod=indent
+autocmd FileType yaml setlocal foldlevel=2
+
+" Kubernetes-specific mappings
+nnoremap <leader>ka :!kubectl apply -f %<CR>
+nnoremap <leader>kd :!kubectl delete -f %<CR>
+nnoremap <leader>ky :!kubectl dry-run=client -o yaml apply -f %<CR>
+
+" ============================================================================
+" UTILITY FUNCTIONS FOR INFRASTRUCTURE
+" ============================================================================
+
+" Function to strip trailing whitespace (important for YAML)
+function! StripTrailingWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunction
+
+" Auto-strip whitespace for infrastructure files
+autocmd BufWritePre *.tf,*.tfvars,*.yaml,*.yml,*.json,*.sh call StripTrailingWhitespace()
+
+" Function to toggle between different YAML comment styles
+function! ToggleYAMLComment()
+    if getline('.') =~ '^\s*#'
+        s/^\(\s*\)#\s*/\1/
+    else
+        s/^\(\s*\)/\1# /
+    endif
+endfunction
+
+" Comment/uncomment lines in YAML
+nnoremap <leader>cc :call ToggleYAMLComment()<CR>
+vnoremap <leader>cc :call ToggleYAMLComment()<CR>
+
+" Quick template insertion for common files
+nnoremap <leader>tkf :read ~/.vim/templates/main.tf<CR>
+nnoremap <leader>tky :read ~/.vim/templates/deployment.yaml<CR>
+nnoremap <leader>tkd :read ~/.vim/templates/Dockerfile<CR>
+
+" ============================================================================
+" STATUS LINE ENHANCEMENT FOR DEVOPS
+" ============================================================================
+
+" Enhanced status line showing file type and git branch (if available)
+set statusline=
+set statusline+=%f                          " File path
+set statusline+=%m                          " Modified flag
+set statusline+=%r                          " Read-only flag
+set statusline+=%h                          " Help buffer flag
+set statusline+=%w                          " Preview window flag
+set statusline+=%=                          " Right align from here
+set statusline+=%y                          " File type
+set statusline+=\ [%{&ff}]                 " File format
+set statusline+=\ [%{&fenc}]               " File encoding
+set statusline+=\ %p%%                     " Percentage through file
+set statusline+=\ %l:%c                    " Line:Column
+set statusline+=\ %L                       " Total lines
+
+" ============================================================================
+" QUICK COMMANDS FOR INFRASTRUCTURE WORK
+" ============================================================================
+
+" Quick commands for common DevOps tasks
+command! TFPlan !terraform plan
+command! TFApply !terraform apply
+command! TFValidate !terraform validate
+command! TFFmt !terraform fmt
+command! KApply !kubectl apply -f %
+command! KDelete !kubectl delete -f %
+command! KDryRun !kubectl apply --dry-run=client -f %
+command! DockerBuild !docker build -t %:t:r .
+command! ComposeUp !docker-compose up -d
+command! ComposeDown !docker-compose down
