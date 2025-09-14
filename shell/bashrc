@@ -1,8 +1,63 @@
+# ~/.bashrc: optimized for Fish shell auto-switch
+# Minimal configuration since we auto-switch to Fish
+
+# Essential PATH exports (needed before Fish starts)
+export PATH="$PATH:/home/lenovo/.local/bin"
+
+# Volta JavaScript toolchain
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# ASDF version manager (if not handled by Fish)
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    source "$HOME/.asdf/asdf.sh"
+fi
+
+# Auto-switch to Fish for interactive sessions
+if [ -n "$BASH_VERSION" ] && [ -x /usr/bin/fish ] && [[ $- == *i* ]]; then
+    exec /usr/bin/fish
+fi
+
+# Fallback configuration (only used if Fish is not available)
+# This ensures basic functionality if Fish fails to start
+
+# History configuration
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend
+
+# Basic aliases for fallback mode
+alias cat='bat'
+alias find='fd'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cat=bat
-alias find=fd
-if [ -x /usr/bin/fish ]; then
-    exec /usr/bin/fish
+
+# Enable color support
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
+# Basic prompt (fallback only)
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='\u@\h:\w\$ '
+fi
+
+# Enable bash completion
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# Load custom bash aliases if they exist
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
