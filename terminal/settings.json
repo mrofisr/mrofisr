@@ -1,0 +1,240 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [],
+    "centerOnLaunch": true,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "initialCols": 120,
+    "initialPosition": "0,0",
+    "initialRows": 40,
+    "keybindings": 
+    [
+        {
+            "id": "Terminal.PreviousTab",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "Terminal.SplitPaneVertical",
+            "keys": "alt+\\"
+        },
+        {
+            "id": "Terminal.NewTab",
+            "keys": "ctrl+shift+t"
+        },
+        {
+            "id": "Terminal.CloseTab",
+            "keys": "ctrl+w"
+        },
+        {
+            "id": "Terminal.SplitPaneHorizontal",
+            "keys": "alt+minus"
+        },
+        {
+            "id": "Terminal.MoveFocusLeft",
+            "keys": "alt+h"
+        },
+        {
+            "id": "Terminal.MoveFocusRight",
+            "keys": "alt+l"
+        },
+        {
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+k"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "alt+j"
+        },
+        {
+            "id": "Terminal.ResizePaneLeft",
+            "keys": "alt+shift+h"
+        },
+        {
+            "id": "Terminal.ResizePaneRight",
+            "keys": "alt+shift+l"
+        },
+        {
+            "id": "Terminal.ResizePaneUp",
+            "keys": "alt+shift+k"
+        },
+        {
+            "id": "Terminal.ResizePaneDown",
+            "keys": "alt+shift+j"
+        },
+        {
+            "id": "Terminal.NextTab",
+            "keys": "ctrl+tab"
+        },
+        {
+            "id": "Terminal.SwitchToTab0",
+            "keys": "ctrl+1"
+        },
+        {
+            "id": "Terminal.SwitchToTab1",
+            "keys": "ctrl+2"
+        },
+        {
+            "id": "Terminal.SwitchToTab2",
+            "keys": "ctrl+3"
+        },
+        {
+            "id": "Terminal.SwitchToTab3",
+            "keys": "ctrl+4"
+        },
+        {
+            "id": "Terminal.SwitchToTab4",
+            "keys": "ctrl+5"
+        },
+        {
+            "id": "Terminal.SwitchToTab5",
+            "keys": "ctrl+6"
+        },
+        {
+            "id": "Terminal.SwitchToTab6",
+            "keys": "ctrl+7"
+        },
+        {
+            "id": "Terminal.CommandPalette",
+            "keys": "ctrl+shift+p"
+        },
+        {
+            "id": "Terminal.SwitchToTab7",
+            "keys": "ctrl+8"
+        },
+        {
+            "id": "Terminal.SwitchToTab8",
+            "keys": "ctrl+9"
+        }
+    ],
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "colorScheme": "One Half Dark",
+            "cursorColor": "#FFFFFF",
+            "cursorShape": "filledBox",
+            "font": 
+            {
+                "face": "MesloLGL Nerd Font",
+                "size": 11,
+                "weight": "normal"
+            },
+            "historySize": 9999,
+            "intenseTextStyle": "bright",
+            "opacity": 90,
+            "padding": "8, 8, 8, 8",
+            "useAcrylic": true
+        },
+        "list": 
+        [
+            {
+                "colorScheme": "Campbell",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "font": 
+                {
+                    "face": "MesloLGL Nerd Font",
+                    "size": 11
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell",
+                "opacity": 90,
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "Campbell",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "font": 
+                {
+                    "face": "MesloLGL Nerd Font",
+                    "size": 11
+                },
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt",
+                "opacity": 90,
+                "useAcrylic": true
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "colorScheme": "One Half Dark",
+                "font": 
+                {
+                    "face": "MesloLGL Nerd Font",
+                    "size": 11
+                },
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "opacity": 90,
+                "source": "Windows.Terminal.PowershellCore",
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "One Half Dark",
+                "font": 
+                {
+                    "face": "MesloLGL Nerd Font",
+                    "size": 11
+                },
+                "guid": "{6e51df26-b41e-535d-98ea-e531f55c6112}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "opacity": 90,
+                "source": "Microsoft.WSL",
+                "useAcrylic": true
+            },
+            {
+                "colorScheme": "One Half Dark",
+                "font": 
+                {
+                    "face": "MesloLGL Nerd Font",
+                    "size": 11
+                },
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "opacity": 90,
+                "source": "Git",
+                "useAcrylic": true
+            }
+        ]
+    },
+    "schemes": [],
+    "showTabsInTitlebar": true,
+    "tabWidthMode": "equal",
+    "themes": []
+}
