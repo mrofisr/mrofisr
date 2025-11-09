@@ -1,0 +1,19 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-space": "editor::ShowCompletions",
+      "ctrl-i": "editor::ShowCompletions"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "up": "editor::ContextMenuPrevious",
+      "down": "editor::ContextMenuNext",
+      "enter": "editor::ConfirmCompletion",
+      "tab": "editor::ConfirmCompletion",
+      "escape": "editor::Cancel"
+    }
+  }
+]
