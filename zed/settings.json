@@ -1,0 +1,125 @@
+{
+  "icon_theme": "Catppuccin Macchiato",
+  "theme": "One Dark",
+  "buffer_font_family": "MesloLGM Nerd Font",
+  "buffer_font_size": 13,
+  "buffer_font_weight": 400,
+  "buffer_font_features": {
+    "calt": true
+  },
+  "buffer_line_height": {
+    "custom": 1.6
+  },
+  "cursor_blink": true,
+  "relative_line_numbers": true,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 3,
+  "gutter": {
+    "line_numbers": true,
+    "folds": false
+  },
+  "indent_guides": {
+    "enabled": false
+  },
+  "unnecessary_code_fade": 0.5,
+  "show_whitespaces": "none",
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "autosave": "on_window_change",
+  "format_on_save": "on",
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true
+  },
+  "prettier": {
+    "enabled": true
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": "language_server"
+    },
+    "JSON": {
+      "formatter": "language_server"
+    },
+    "HTML": {
+      "formatter": "language_server"
+    },
+    "CSS": {
+      "formatter": "language_server"
+    },
+    "Markdown": {
+      "formatter": "prettier"
+    },
+    "YAML": {
+      "formatter": "language_server",
+      "tab_size": 2
+    }
+  },
+  "file_types": {
+    "Dotenv": ["*env*"],
+    "JSON": ["*.json"],
+    "YAML": ["*.yaml"],
+    "TOML": ["*.toml"]
+  },
+  "git": {
+    "git_gutter": "tracked_files"
+  },
+  "terminal": {
+    "shell": "system"
+  },
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5"
+    },
+    "enabled": false
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "confirm_quit": false,
+  "restore_on_startup": "last_workspace",
+  "show_completion_documentation": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}
