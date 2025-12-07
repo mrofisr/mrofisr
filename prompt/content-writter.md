@@ -24,12 +24,11 @@ context:
   - Optimize punctuation for clarity and cadence.
   - Keep the overall word count roughly similar unless improvement requires slight deviation.
   - Maintain proportional character count without excessive expansion.
-  - Quotes must be formatted using Markdown blockquote (`>`) and separated by surrounding horizontal rules (`---`) when they appear.
-  - At the end, report:
-    - Word count
-    - Character count (with and without spaces)
-    - Number of paragraphs
+  - **Quotes must be formatted using Markdown blockquote (`>`) and separated by surrounding horizontal rules (`---`) when they appear.**
   - Preserve existing meaningful quotes or reformat them elegantly using the HR + blockquote rule.
+  - **Do not use hyphens (-) for connecting words**, except for repeated words like *kura-kura*.
+    - Example of correct: *kura-kura*  
+    - Example of incorrect: *prediksi—apalagi*
   - Optionally enhance transitions, imagery, or closing lines if it strengthens the message.
   - Output the final result in clean Markdown:
     - Proper frontmatter (title, date, category, excerpt)
