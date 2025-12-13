@@ -17,6 +17,7 @@ context:
   - Decide the category based on content (e.g., Renungan, Produktivitas, Teknologi, Pribadi).
   - Refine word selection for clarity, intentionality, reader accessibility, and SEO value.
   - Preserve the writer's personality and informal nuance unless told otherwise.
+  - Respect parts that must be placed according to their elements, such as quotes, h1-h6 or ul and ol
   - Adjust paragraphing for readability:
     - Break long blocks of text.
     - Maintain natural flow and pacing.
