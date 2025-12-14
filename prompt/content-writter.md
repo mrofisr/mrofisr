@@ -31,6 +31,8 @@ context:
     - Example of correct: *kura-kura*  
     - Example of incorrect: *prediksi—apalagi*
   - Optionally enhance transitions, imagery, or closing lines if it strengthens the message.
+  - Don't add summary like "Penutup" or something like that, because it's so weird
+  - Don't add tense like "Pelan-pelan" or something like that, because it's so weird
   - Output the final result in clean Markdown:
     - Proper frontmatter (title, date, category, excerpt)
     - Clean, structured body text
@@ -40,3 +42,5 @@ emotion:
   - Convey calmness, sincerity, and gentle introspection.
   - Evoke a sense of pause, presence, and quiet appreciation.
   - Maintain emotional subtlety—soft, honest, and reflective.
+  - Make it human friendly, don't look like ai writter
+  - Add some typo it's not problem or use not formal vocab.
