@@ -1,0 +1,158 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: transparent; }
+.chat-wrap {
+  padding: 16px 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-family: var(--font-sans);
+  max-width: 520px;
+}
+.msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 4px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.msg-row.show { opacity: 1; transform: translateY(0); }
+.msg-row.right { flex-direction: row-reverse; }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500; color: #fff;
+  margin-bottom: 2px;
+}
+.avatar.hidden { visibility: hidden; }
+.bubble {
+  max-width: 78%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  word-break: break-word;
+}
+.bubble.right {
+  background: #7c3aed;
+  border-color: transparent;
+  color: #fff;
+  border-radius: 18px 18px 4px 18px;
+}
+.bubble.left { border-radius: 18px 18px 18px 4px; }
+.time-label {
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin: 8px 0 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.time-label.show { opacity: 1; }
+.typing-row {
+  display: flex; align-items: flex-end; gap: 8px;
+  margin-bottom: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.typing-row.show { opacity: 1; }
+.typing-bubble {
+  padding: 12px 16px;
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: 18px 18px 18px 4px;
+  display: flex; gap: 5px; align-items: center;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--color-text-tertiary);
+  animation: bounce 1.2s infinite ease-in-out;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+.name-tag {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-left: 38px;
+  margin-bottom: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.name-tag.show { opacity: 1; }
+.link-text { color: #c4b5fd; text-decoration: underline; }
+.link-text.dark { color: #7c3aed; }
+</style>
+
+<div class="chat-wrap" id="chat">
+  <div class="time-label" id="tl0">Today 2:41 PM</div>
+
+  <div class="name-tag" id="nt0">Abdur Rofi</div>
+  <div class="msg-row" id="m0">
+    <div class="avatar">ID</div>
+    <div class="bubble left">Hi, I'm Abdur Rofi 👋</div>
+  </div>
+
+  <div class="msg-row" id="m1">
+    <div class="avatar hidden">ID</div>
+    <div class="bubble left">Chaos Engineer at @jawaracloud.</div>
+  </div>
+
+  <div class="msg-row" id="m2">
+    <div class="avatar hidden">ID</div>
+    <div class="bubble left">Cloud Infra Enthusiast</div>
+  </div>
+
+  <div class="msg-row" id="m3">
+    <div class="avatar hidden">ID</div>
+    <div class="bubble left">Entrepreneur &amp; avid open-source contributor 🚀</div>
+  </div>
+
+  <div class="msg-row right" id="m4">
+    <div class="bubble right">That's awesome! How can I reach you?</div>
+  </div>
+
+  <div class="msg-row" id="m5">
+    <div class="avatar hidden">ID</div>
+    <div class="bubble left">Reach me on <span class="link-text">@mrofisr_</span> on X, or drop me an email at abdur.rofi@jawara.cloud 📩</div>
+  </div>
+</div>
+
+<script>
+const seq = [
+  { show: ['tl0'], delay: 300 },
+  { show: ['nt0', 'm0'], delay: 600 },
+  { show: ['ty1'], delay: 1200 },
+  { hide: ['ty1'], show: ['m1'], delay: 1600 },
+  { show: ['ty2'], delay: 2200 },
+  { hide: ['ty2'], show: ['m2'], delay: 2700 },
+  { show: ['ty3'], delay: 3300 },
+  { hide: ['ty3'], show: ['m3'], delay: 3800 },
+  { show: ['m4'], delay: 4600 },
+  { show: ['ty4'], delay: 5400 },
+  { hide: ['ty4'], show: ['m5'], delay: 6000 },
+];
+seq.forEach(step => {
+  setTimeout(() => {
+    (step.show || []).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('show');
+    });
+    (step.hide || []).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('show');
+    });
+  }, step.delay);
+});
+</script>
