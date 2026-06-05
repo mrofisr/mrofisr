@@ -1,14 +1,14 @@
-## 👤 About Me
+## About Me
 - **Name:** Rofi / [@mrofisr](https://github.com/mrofisr)
 - **Role:** DevOps & Software Engineer
-- **Location:** 🇮🇩 Indonesia
+- **Location:** Indonesia
 - **Hobbies:** 
-  - ☕ Coffee brewing & culinary exploring
-  - 🏔️ Traveling & outdoor adventures
+  - Coffee brewing & culinary exploring
+  - Traveling & outdoor adventures
 
 ---
 
-## 🚀 Tech Stack & Tools
+## Tech Stack & Tools
 
 - **Languages & Frameworks:** Go (Golang)
 - **DevOps & Cloud:** Terraform, Docker, Kubernetes
@@ -17,7 +17,7 @@
 
 ---
 
-## ✉️ Contact
+## Contact
 Feel free to reach out or connect with me:
 - **Email:** [abdur.rofi@jawara.cloud](mailto:abdur.rofi@jawara.cloud)
 - **GitHub:** [@mrofisr](https://github.com/mrofisr)
