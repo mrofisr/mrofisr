@@ -1,88 +1,75 @@
 {
-  "editor.fontFamily": "MesloLGM Nerd Font",
-  "editor.fontSize": 16,
-  "editor.fontWeight": "normal",
-  "editor.fontVariations": true,
-  "editor.fontLigatures": true,
-  "editor.lineHeight": 1.6,
-  "editor.minimap.enabled": false,
-  "editor.cursorBlinking": "expand",
-  "editor.cursorStyle": "line",
-  "editor.cursorWidth": 3,
-  "editor.cursorSmoothCaretAnimation": "explicit",
-  "editor.renderLineHighlight": "none",
-  "editor.renderWhitespace": "none",
-  "editor.hover.delay": 1500,
-  "editor.suggest.showKeywords": false,
-  "editor.suggest.showSnippets": true,
-  "editor.suggest.preview": false,
-  "editor.suggestSelection": "recentlyUsed",
-  "editor.guides.indentation": false,
-  "editor.guides.bracketPairs": false,
-  "editor.codeLens": false,
-  "editor.glyphMargin": false,
-  "editor.occurrencesHighlight": "singleFile",
-  "editor.selectionHighlight": false,
-  "editor.folding": false,
-  "editor.lineNumbers": "relative",
-  "editor.hideCursorInOverviewRuler": true,
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.vertical": "hidden",
-  "files.autoSave": "onWindowChange",
-  "workbench.startupEditor": "none",
-  "workbench.activityBar.location": "hidden",
-  "workbench.statusBar.visible": false,
-  "zenMode.hideStatusBar": true,
-  "zenMode.silentNotifications": true,
-  "zenMode.showTabs": "multiple",
-  "zenMode.centerLayout": false,
-  "zenMode.fullScreen": true,
-  "zenMode.hideLineNumbers": true,
-  "zenMode.hideActivityBar": true,
-  "zenMode.restore": true,
-  "workbench.editor.showTabs": "multiple",
-  "breadcrumbs.enabled": false,
-  "workbench.tips.enabled": false,
-  "editor.overviewRulerBorder": false,
-  "window.commandCenter": false,
-  "workbench.sideBar.location": "left",
-  "window.title": "${folderName}${separator}${profileName}",
-  "workbench.editor.decorations.colors": false,
-  "workbench.editor.decorations.badges": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.accessibilitySupport": "off",
-  "workbench.editor.enablePreview": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "update.showReleaseNotes": false,
-  "git.autofetch": true,
-  "git.autorefresh": true,
-  "git.enableSmartCommit": true,
-  "git.confirmSync": true,
-  "[typescript]": { // for .ts files
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[typescriptreact]": { // for .tsx files
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "editor.codeActionsOnSave": { // apply ESLint
-    "source.fixAll.eslint": "always"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.colorTheme": "Oscura Midnight",
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "window.menuBarVisibility": "compact",
-  "window.customTitleBarVisibility": "windowed",    
+    "workbench.startupEditor": "none",
+    
+    // Theme Configuration (Everforest Dark Medium)
+    "workbench.colorTheme": "Everforest Dark",
+    "editor.semanticHighlighting.enabled": true,
+    
+    // Focus Settings (Minimizing distractions)
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "breadcrumbs.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.renderLineHighlight": "gutter",
+    
+    // Geek Settings (Productivity, advanced styling & privacy)
+    "editor.fontFamily": "'MesloLGM Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.guides.indentation": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.inlayHints.enabled": "on",
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.lineNumbers": "relative",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "telemetry.telemetryLevel": "off",
+    
+    // Zen Mode Behavior
+    "zenMode.fullScreen": true,
+    "zenMode.hideActivityBar": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideLineNumbers": true,
+    "zenMode.centerLayout": true,
+    "zenMode.restore": true,
+    "zenMode.showTabs": "none",
+    "zenMode.silentNotifications": true,
+    
+    // Custom Token and Color Customizations for Everforest
+    "editor.tokenColorCustomizations": {
+        "[Everforest*]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "comment",
+                        "punctuation.definition.comment"
+                    ],
+                    "settings": {
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": [
+                        "keyword",
+                        "storage.type",
+                        "storage.modifier"
+                    ],
+                    "settings": {
+                        "fontStyle": "italic"
+                    }
+                }
+            ]
+        }
+    }
 }
