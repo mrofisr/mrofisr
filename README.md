@@ -10,10 +10,15 @@
 
 ## Tech Stack & Tools
 
-- **Languages & Frameworks:** Go (Golang)
+- **Languages & Frameworks:** Go (Golang), JavaScript / TypeScript
 - **DevOps & Cloud:** Terraform, Docker, Kubernetes
 - **Shells & Prompts:** Zsh, Fish, Bash, PowerShell, Oh-My-Posh
 - **Editors:** Classic Vim, Zed Editor, VS Code
+
+---
+
+## Projects
+- **[Sakeenah](https://sakeenah.site)**: A beautiful, modern, and interactive Islamic wedding invitation website.
 
 ---
 
