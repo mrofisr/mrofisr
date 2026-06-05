@@ -1,316 +1,519 @@
-call plug#begin()
-Plug 'morhetz/gruvbox'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'branch': 'release/0.x'
-  \ }
-Plug '907th/vim-auto-save'
-" Infrastructure & DevOps plugins
-Plug 'hashivim/vim-terraform'              " Terraform syntax highlighting and formatting
-Plug 'stephpy/vim-yaml'                    " Enhanced YAML support
-Plug 'pearofducks/ansible-vim'             " Ansible/YAML playbook support
-Plug 'ekalinin/Dockerfile.vim'             " Dockerfile syntax highlighting
-Plug 'chr4/nginx.vim'                      " Nginx configuration syntax
+" ==============================================================================
+"               POWERFUL, IDE-LIKE CLASSIC VIM 9.0 CONFIGURATION
+"         Optimized for YAML Development & AI-Assisted Code Reviews
+" ==============================================================================
+
+" --- 1. PLUGIN MANAGER (vim-plug) ---
+call plug#begin('~/.vim/plugged')
+
+" UI & Aesthetics
+Plug 'dracula/vim', { 'as': 'dracula' } " Famous high-contrast Dracula dark theme
+Plug 'joshdick/onedark.vim'            " Premium dark color scheme
+Plug 'sainnhe/everforest'               " Super comfortable, warm forest theme
+Plug 'morhetz/gruvbox'                  " Premium retro groove theme
+Plug 'vim-airline/vim-airline'          " Beautiful, status line
+Plug 'vim-airline/vim-airline-themes'   " Airline themes
+Plug 'ryanoasis/vim-devicons'           " File icons (requires Nerd Font)
+
+" Navigation & Search
+Plug 'preservim/nerdtree'               " Sidebar file explorer
+Plug 'ctrlpvim/ctrlp.vim'               " Simple, lightweight fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'                 " Premium, blazing-fast fuzzy finder
+
+" Code Editing Utilities
+Plug 'tpope/vim-commentary'             " Comment/uncomment with `gc` / `gcc`
+Plug 'tpope/vim-surround'               " Manipulate surrounds: quotes, parens, tags
+Plug 'tpope/vim-repeat'                 " Allow repeating plugin maps with `.`
+
+" Git Integration & AI Code Review Tools
+Plug 'tpope/vim-fugitive'               " Ultimate Git integration (Gdiffsplit, Gstatus)
+Plug 'airblade/vim-gitgutter'           " Git diff signs in gutter & hunk staging
+
+" Language Server Protocol (LSP) & IDE features
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " VS Code-like LSP features
+Plug 'stephpy/vim-yaml'                 " Improved YAML syntax highlighting
+
+" Async Linting Engine (wires CLI linters into Vim)
+Plug 'dense-analysis/ale'               " Inline linting: eslint, shellcheck, tflint, yamllint
+
+" Additional Language Support for AI Code Review
+Plug 'hashivim/vim-terraform'           " Terraform syntax, fmt, validate
+Plug 'leafgarland/typescript-vim'       " TypeScript syntax highlighting
+Plug 'pangloss/vim-javascript'          " Enhanced JavaScript syntax
+Plug 'maxmellon/vim-jsx-pretty'         " JSX/TSX syntax support
+
+" Diff & Review Enhancement
+Plug 'rickhowe/diffchar.vim'            " Character-level diff highlighting
+Plug 'mbbill/undotree'                  " Visual undo history tree
+Plug 'machakann/vim-highlightedyank'    " Briefly highlight yanked text
+Plug 'Yggdroot/indentLine'              " Show indentation guides
+
 call plug#end()
 
-" Vim settings based on VSCode configuration
-" Font settings (For terminal Vim, configure the terminal emulator font)
-" In Neovim, you can configure the font in your terminal emulator
-" set guifont=Meslo\LGM\Nerd\Font:h16
+" --- 2. GENERAL EDITOR SETTINGS ---
+syntax on                               " Enable syntax highlighting
+filetype plugin indent on               " Enable filetype plugins and auto-indenting
 
-" Line numbers & cursor
-set number           " Show line numbers
-set relativenumber   " Show relative line numbers
-set cursorline       " Highlight the current line
+set number                              " Show absolute line number of current line
+set relativenumber                      " Show relative line numbers for quick jumping
+set cursorline                          " Highlight the current line
+set signcolumn=yes                      " Always show sign column (prevents flashing)
+set updatetime=300                      " Fast update interval (for GitGutter and CoC)
+set mouse=a                             " Enable mouse support in all modes
+set encoding=utf-8                      " Set default file encoding to UTF-8
+set hlsearch                            " Highlight all matches of the search pattern
+set incsearch                           " Show search matches dynamically as you type
+set ignorecase                          " Case-insensitive searching...
+set smartcase                           " ...unless search term contains uppercase letters
+set wildmenu                            " Visual autocomplete menu for command-line mode
+set splitright                          " Open new vertical splits on the right
+set splitbelow                          " Open new horizontal splits below
+set hidden                              " Allow switching away from unsaved buffers
+set cmdheight=1                         " Set command bar height to 1 line
+set backspace=indent,eol,start          " Make backspace behave normally
+set scrolloff=8                         " Keep 8 lines visible above/below cursor
+set sidescrolloff=8                     " Keep 8 columns visible left/right
+set colorcolumn=80,120                  " Show column guides at 80 and 120
+set nowrap                              " Don't wrap long lines (see full context)
+set list                                " Show invisible characters
+set listchars=tab:→\ ,trail:·,extends:»,precedes:«,nbsp:␣
 
-" Scrolling & view
-set nowrap           " Disable line wrapping
-set scrolloff=8      " Keep 8 lines above and below the cursor when scrolling
-set sidescroll=1     " Keep scrolling to the left at a time
-set scrolljump=3     " Scroll by 3 lines at a time
+" Indentation Rules (Sensible defaults, optimized for YAML)
+set expandtab                           " Convert tabs to spaces
+set tabstop=2                           " Width of tab character
+set shiftwidth=2                        " Width of auto-indents
+set softtabstop=2                       " Tab key inserts 2 spaces
+set autoindent                          " Copy indent from current line when starting a new line
+set smartindent                         " Smart auto-indenting for code structures
 
-" Search settings
-set ignorecase       " Ignore case when searching
-set smartcase        " Override 'ignorecase' if the search term has uppercase letters
-set incsearch        " Incremental search
-set hlsearch         " Highlight search matches
+" Persistent undo (review history across sessions)
+set undofile
+set undodir=~/.vim/undodir
+silent !mkdir -p ~/.vim/undodir
 
-" Indentation settings
-set expandtab        " Use spaces instead of tabs
-set tabstop=2        " Set tab width to 2 spaces
-set shiftwidth=2     " Set indentation width to 2 spaces
-set smartindent      " Automatically indent new lines
-set autoindent       " Enable automatic indentation
-set softtabstop=2    " Use 2 spaces per indentation level in insert mode
+" CoC.nvim Compatibility Settings
+set nobackup                            " Some servers have issues with backup files
+set nowritebackup
 
-" Line height & spacing
-set linespace=1      " Set line spacing to 1 (though Vim has different handling)
+" --- 3. THEME & VISUAL CUSTOMIZATION ---
+" Enable 24-bit True Colors (if supported by terminal)
+if (has("termguicolors"))
+  set termguicolors
+endif
 
-" Disable some UI elements (equivalent to VSCode Zen mode)
-set guioptions-=m    " Hide the menu bar
-set guioptions-=T    " Hide toolbar
-set laststatus=2     " Always show the status line
-set noshowmode       " Hide mode indicator
-set noshowcmd        " Hide command in the bottom bar
-set noruler          " Hide ruler (line/column info)
+" Correct RGB escape codes for true color in classic Vim under tmux/screen
+if !has('nvim') && &term =~# '^screen\|^tmux\|^xterm'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
-" Status bar and activity bar visibility
-set noshowmode       " Don't show mode (Normal/Insert) in the command line
+" Premium Everforest Dark Theme Configuration
+set background=dark                     " Use dark background
 
-" Autocompletion
-set completeopt=menuone,noinsert,noselect " Customize completion menu behavior
+" Everforest options for maximum eye comfort
+let g:everforest_background = 'medium'  " 'hard', 'medium' or 'soft'
+let g:everforest_enable_italic = 1      " Enable italics
+let g:everforest_better_performance = 1 " Fast loading
 
-" Git integration
-" Ensure you have a plugin for Git integration (like fugitive.vim)
-" Autocompletion and Git status will be handled by plugins
-let g:fugitive_gitlab_domains = ['gitlab.com','github.com']
+try
+  colorscheme everforest                  " Activate Everforest theme
+  let g:airline_theme='everforest'        " Set Airline to match
+catch
+  " Fallback if Everforest is not yet installed
+  colorscheme desert
+endtry
+let g:airline_powerline_fonts = 1       " Use Powerline/Nerd Font symbols in statusline
 
-" Auto-save behavior (handle through plugins like 'auto-save.vim' or 'vim-auto-save')
-" For example, to auto-save files when Vim loses focus:
-autocmd FocusLost * silent! write
+" --- 4. KEY BINDINGS & SHORTCUTS ---
+let mapleader = " "                     " Set Leader key to Space
 
-" File types and format settings
-autocmd FileType javascript,typescript,typescriptreact,html,json,css setlocal formatoptions+=cro
-autocmd FileType javascript,typescript,typescriptreact,html,json,css setlocal tabstop=2 shiftwidth=2
+" Clear search highlights quickly
+nnoremap <leader>h :nohlsearch<CR>
 
-" Format on save (via Prettier)
-" You will need a plugin like 'prettier.vim' to enable this functionality
-autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx,*.json,*.css,*.html Prettier
+" Window Navigation (Move between splits using Ctrl + h/j/k/l)
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" Highlight matching parentheses and brackets
-set showmatch
+" NERDTree Sidebar Explorer
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>    " Find current file in the NERDTree hierarchy
 
-" Enable smooth scrolling for the cursor
-set scrolloff=5
+" --- FZF & CtrlP Fuzzy Search ---
+" Speed up CtrlP using ripgrep if available (fallback)
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git"'
+  let g:ctrlp_use_caching = 0
+endif
 
-" Enable code linting on save (via an appropriate plugin like ale or syntastic)
-" For ESLint (assuming you have ale or syntastic set up)
-let g:ale_fix_on_save = 1
-let g:ale_linters = {'typescript': ['eslint']}
-let g:ale_fixers = {'typescript': ['eslint']}
+" FZF Fuzzy Finder Configurations
+if executable('fzf')
+  " Use FZF for file searching by default (replaces CtrlP with blazing-fast FZF)
+  let g:ctrlp_map = '' " Disable default CtrlP mapping to avoid conflicts
+  nnoremap <C-p> :Files<CR>
+  
+  " Useful FZF bindings
+  nnoremap <leader>pf :Files<CR>          " Search files in project
+  nnoremap <leader>pb :Buffers<CR>        " Search open buffers
+  nnoremap <leader>pr :Rg<CR>             " Search text inside files (ripgrep)
+  nnoremap <leader>ph :History<CR>        " Search recently opened files (MRU)
+  nnoremap <leader>pc :Commits<CR>        " Search git commits
+else
+  let g:ctrlp_map = '<C-p>'
+endif
 
-" File explorer location (Configure through NERDTree or a similar plugin)
-" You can use a file explorer like NERDTree or vim-vinegar to manage file browsing
-" Example:
-" map <leader>e :NERDTreeToggle<CR>
+" Ripgrep (rg) Built-in Integration
+if executable('rg')
+  " Use ripgrep as standard grep tool for classic Vim commands
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+  set grepformat=%f:%l:%c:%m
+  
+  " Search word under cursor instantly in project and open quickfix
+  nnoremap <leader>rg :grep! "\b<C-r><C-w>\b"<CR>:copen<CR>
+endif
 
-" Theme settings
-" You can use a theme like 'Oscura Midnight' in Vim with a plugin
-" Example: Install a color scheme like 'gruvbox', 'onedark', or 'tokyonight'
-colorscheme gruvbox  " or any other color scheme you prefer
-set background=dark
+" --- 5. AI CODE REVIEW & GIT WORKFLOWS ---
+" Key mappings for Git operations
+nnoremap <leader>gs :Git<CR>            " Open interactive Git Status window (Gstatus)
+nnoremap <leader>gd :Gdiffsplit<CR>     " Open side-by-side Git Diff view (Gdiffsplit)
+nnoremap <leader>gD :Gdiffsplit main<CR> " Diff against main branch
+nnoremap <leader>gb :Git blame<CR>       " Open Git Blame sidebar
+nnoremap <leader>gl :Git log --oneline -20 %<CR> " Git log for current file
 
-" Window settings (title bar customization)
-set titlestring=%F    " Show the full file path in the title
-set title             " Enable title bar
+" GitGutter hunk navigation and actions (Review AI code hunks)
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▁'
+let g:gitgutter_sign_removed_first_line = '▔'
+let g:gitgutter_sign_modified_removed = '▎'
+let g:gitgutter_map_keys = 0            " Disable defaults, use our own
 
-" ============================================================================
-" INFRASTRUCTURE & DEVOPS CONFIGURATIONS
-" ============================================================================
+nmap ]c <Plug>(GitGutterNextHunk)       " Jump to next AI change hunk
+nmap [c <Plug>(GitGutterPrevHunk)       " Jump to previous AI change hunk
 
-" Terraform Configuration
-augroup TerraformSettings
-    autocmd!
-    " File type detection for Terraform
-    autocmd BufRead,BufNewFile *.tf set filetype=terraform
-    autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
-    autocmd BufRead,BufNewFile *.tfstate set filetype=json
-    autocmd BufRead,BufNewFile *.tfplan set filetype=terraform
+" Interactive Hunk Staging and Reverting
+nmap <leader>hp <Plug>(GitGutterPreviewHunk) " Preview the AI changes at current line
+nmap <leader>hs <Plug>(GitGutterStageHunk)   " Stage (accept) this AI change hunk
+nmap <leader>hu <Plug>(GitGutterUndoHunk)    " Revert (discard) this AI change hunk
 
-    " Terraform-specific settings
-    autocmd FileType terraform setlocal commentstring=#\ %s
-    autocmd FileType terraform setlocal tabstop=2
-    autocmd FileType terraform setlocal shiftwidth=2
-    autocmd FileType terraform setlocal softtabstop=2
-    autocmd FileType terraform setlocal expandtab
-    autocmd FileType terraform setlocal autoindent
-    autocmd FileType terraform setlocal smartindent
+" KILLER FEATURE: Fold unchanged lines — show ONLY what AI changed
+nmap <leader>hf :GitGutterFold<CR>
 
-    " Auto-format Terraform files on save (requires terraform fmt in PATH)
-    autocmd BufWritePre *.tf :silent! !terraform fmt %
-    autocmd BufWritePost *.tf :edit
-augroup END
+" --- 6. ALE — ASYNC LINTING ENGINE (Wires CLI Linters into Vim) ---
+" This makes eslint, shellcheck, yamllint, tflint show errors INLINE.
 
-" YAML Configuration (Kubernetes, Ansible, etc.)
-augroup YAMLSettings
-    autocmd!
-    " Enhanced YAML settings
-    autocmd FileType yaml setlocal tabstop=2
-    autocmd FileType yaml setlocal shiftwidth=2
-    autocmd FileType yaml setlocal softtabstop=2
-    autocmd FileType yaml setlocal expandtab
-    autocmd FileType yaml setlocal autoindent
-    autocmd FileType yaml setlocal indentkeys-=0#
-    autocmd FileType yaml setlocal indentkeys-=<:>
+let g:ale_linters = {
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'javascript': ['eslint'],
+\   'javascriptreact': ['eslint'],
+\   'yaml': ['yamllint'],
+\   'terraform': ['tflint', 'terraform'],
+\   'sh': ['shellcheck'],
+\   'bash': ['shellcheck'],
+\   'json': ['jq'],
+\   'dockerfile': ['hadolint'],
+\}
 
-    " Kubernetes YAML detection
-    autocmd BufRead,BufNewFile *.k8s.yaml set filetype=yaml
-    autocmd BufRead,BufNewFile *.k8s.yml set filetype=yaml
-    autocmd BufRead,BufNewFile kustomization.yaml set filetype=yaml
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
+\   'javascript': ['prettier', 'eslint'],
+\   'javascriptreact': ['prettier', 'eslint'],
+\   'yaml': ['prettier'],
+\   'terraform': ['terraform'],
+\   'sh': ['shfmt'],
+\   'json': ['prettier', 'jq'],
+\}
 
-    " Docker Compose detection
-    autocmd BufRead,BufNewFile docker-compose*.yml set filetype=yaml
-    autocmd BufRead,BufNewFile docker-compose*.yaml set filetype=yaml
+let g:ale_lint_on_enter = 1             " Lint when opening a file
+let g:ale_lint_on_save = 1              " Lint on save
+let g:ale_lint_on_text_changed = 'normal' " Lint as you navigate
+let g:ale_lint_delay = 500              " Wait 500ms after typing stops
+let g:ale_fix_on_save = 0               " DON'T auto-fix (review first!)
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info = 'ℹ'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_floating_preview = 1          " Use floating window for details
+let g:ale_detail_to_floating_preview = 1
+let g:ale_virtualtext_cursor = 'current' " Show error inline at cursor
 
-    " Ansible playbook detection
-    autocmd BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
-    autocmd BufRead,BufNewFile */roles/*/tasks/*.yml set filetype=yaml.ansible
-    autocmd BufRead,BufNewFile site.yml set filetype=yaml.ansible
+" ALE Navigation — Jump between lint errors
+nmap <silent> ]e <Plug>(ale_next_wrap)
+nmap <silent> [e <Plug>(ale_previous_wrap)
 
-    " GitHub Actions workflows
-    autocmd BufRead,BufNewFile .github/workflows/*.yml set filetype=yaml
-    autocmd BufRead,BufNewFile .github/workflows/*.yaml set filetype=yaml
-augroup END
+" ALE Actions
+nmap <silent> <leader>ed <Plug>(ale_detail)      " Show error detail
+nmap <silent> <leader>af :ALEFix<CR>              " Auto-fix current file
+nmap <silent> <leader>at :ALEToggle<CR>           " Toggle ALE on/off
+nmap <silent> <leader>el :ALEPopulateQuickfix<CR>:copen<CR> " All errors → quickfix
 
-" JSON Configuration
-augroup JSONSettings
-    autocmd!
-    autocmd FileType json setlocal tabstop=2
-    autocmd FileType json setlocal shiftwidth=2
-    autocmd FileType json setlocal softtabstop=2
-    autocmd FileType json setlocal expandtab
+" --- 7. LANGUAGE SERVER (CoC.nvim) INTEGRATION ---
+" CoC handles LSP (go-to-definition, type checking, hover docs)
+" ALE handles linting (eslint, shellcheck, yamllint, tflint)
+" They work together without conflict.
+let g:coc_global_extensions = [
+\   'coc-yaml',
+\   'coc-tsserver',
+\   'coc-json',
+\   'coc-sh',
+\]
 
-    " Format JSON on save (requires jq in PATH)
-    autocmd BufWritePre *.json :%!jq .
-augroup END
+" Tab for Autocomplete & Navigation
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" HCL Configuration (HashiCorp Configuration Language)
-augroup HCLSettings
-    autocmd!
-    autocmd BufRead,BufNewFile *.hcl set filetype=hcl
-    autocmd BufRead,BufNewFile *.nomad set filetype=hcl
-    autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-augroup END
-
-" Docker Configuration
-augroup DockerSettings
-    autocmd!
-    autocmd BufRead,BufNewFile Dockerfile* set filetype=dockerfile
-    autocmd BufRead,BufNewFile *.dockerfile set filetype=dockerfile
-    autocmd BufRead,BufNewFile .dockerignore set filetype=gitignore
-augroup END
-
-" Shell Script Configuration
-augroup ShellSettings
-    autocmd!
-    autocmd FileType sh setlocal tabstop=2
-    autocmd FileType sh setlocal shiftwidth=2
-    autocmd FileType sh setlocal softtabstop=2
-    autocmd FileType sh setlocal expandtab
-
-    " Bash completion and syntax
-    autocmd BufRead,BufNewFile *.bash set filetype=sh
-    autocmd BufRead,BufNewFile .bashrc set filetype=sh
-    autocmd BufRead,BufNewFile .bash_profile set filetype=sh
-augroup END
-
-" Configuration Files
-augroup ConfigSettings
-    autocmd!
-    " Nginx configuration
-    autocmd BufRead,BufNewFile */nginx/*.conf set filetype=nginx
-    autocmd BufRead,BufNewFile nginx.conf set filetype=nginx
-
-    " Apache configuration
-    autocmd BufRead,BufNewFile *.conf set filetype=apache
-    autocmd BufRead,BufNewFile httpd.conf set filetype=apache
-
-    " Environment files
-    autocmd BufRead,BufNewFile .env* set filetype=sh
-    autocmd BufRead,BufNewFile *.env set filetype=sh
-augroup END
-
-" ============================================================================
-" TERRAFORM-SPECIFIC ENHANCEMENTS
-" ============================================================================
-
-" Terraform vim-terraform plugin configuration
-let g:terraform_align = 1                    " Enable alignment
-let g:terraform_fold_sections = 1            " Enable code folding
-let g:terraform_fmt_on_save = 1              " Format on save
-
-" Custom Terraform key mappings
-nnoremap <leader>tf :TerraformFmt<CR>
-nnoremap <leader>tv :TerraformValidate<CR>
-nnoremap <leader>ti :TerraformInit<CR>
-nnoremap <leader>tp :TerraformPlan<CR>
-
-" ============================================================================
-" YAML-SPECIFIC ENHANCEMENTS
-" ============================================================================
-
-" YAML folding based on indentation
-autocmd FileType yaml setlocal foldmethod=indent
-autocmd FileType yaml setlocal foldlevel=2
-
-" Kubernetes-specific mappings
-nnoremap <leader>ka :!kubectl apply -f %<CR>
-nnoremap <leader>kd :!kubectl delete -f %<CR>
-nnoremap <leader>ky :!kubectl dry-run=client -o yaml apply -f %<CR>
-
-" ============================================================================
-" UTILITY FUNCTIONS FOR INFRASTRUCTURE
-" ============================================================================
-
-" Function to strip trailing whitespace (important for YAML)
-function! StripTrailingWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Auto-strip whitespace for infrastructure files
-autocmd BufWritePre *.tf,*.tfvars,*.yaml,*.yml,*.json,*.sh call StripTrailingWhitespace()
+" Enter to confirm autocomplete selection
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Function to toggle between different YAML comment styles
-function! ToggleYAMLComment()
-    if getline('.') =~ '^\s*#'
-        s/^\(\s*\)#\s*/\1/
-    else
-        s/^\(\s*\)/\1# /
+" Jump between diagnostics/errors
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo Code Navigation (LSP)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Show documentation when pressing 'K'
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Auto-format YAML files on save
+autocmd BufWritePre *.yml,*.yaml silent! call CocAction('format')
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" --- 8. TERRAFORM INTEGRATION ---
+let g:terraform_fmt_on_save = 0         " Don't auto-format (review first)
+let g:terraform_align = 1              " Align = signs in HCL
+
+nmap <silent> <leader>tv :!terraform validate<CR>
+nmap <silent> <leader>tf :!terraform fmt %<CR>:e<CR>
+nmap <silent> <leader>tp :!terraform plan -no-color \| head -100<CR>
+
+" --- 9. AI CODE REVIEW MODE KEYBINDINGS ---
+" Structured review workflows for AI-generated code.
+
+" ── Quick Review Mode ────────────────────────────────────────────
+" Open only changed files, fold unchanged, jump between errors
+nmap <silent> <leader>rs :GFiles?<CR>           " Review: show changed files
+nmap <silent> <leader>rf :GitGutterFold<CR>     " Review: fold unchanged lines
+nmap <silent> <leader>re :ALEPopulateQuickfix<CR>:copen<CR> " Review: all errors
+
+" ── Diff Review Mode ─────────────────────────────────────────────
+nmap <silent> <leader>rd :Gdiffsplit<CR>        " Diff against HEAD
+nmap <silent> <leader>rm :Gdiffsplit main<CR>   " Diff against main branch
+nmap <silent> <leader>rc :diffoff!<CR>:only<CR> " Close diff view
+
+" ── Quickfix Navigation (jump between files/errors) ──────────────
+nmap <silent> ]f :cnext<CR>                     " Next file/error in quickfix
+nmap <silent> [f :cprev<CR>                     " Prev file/error in quickfix
+nmap <silent> <leader>qo :copen<CR>             " Open quickfix window
+nmap <silent> <leader>qc :cclose<CR>            " Close quickfix window
+
+" ── Fix & Format ─────────────────────────────────────────────────
+nmap <silent> <leader>aF :ALEFix<CR>:sleep 500m<CR>:ALELint<CR> " Fix + re-lint
+
+" ── Misc Review Helpers ──────────────────────────────────────────
+nmap <silent> <leader>u :UndotreeToggle<CR>     " Visual undo tree
+nmap <silent> <leader><space> :nohlsearch<CR>   " Clear search highlight
+
+" --- 10. INDENTLINE & VISUAL SETTINGS ---
+let g:indentLine_char = '│'
+let g:indentLine_enabled = 1
+
+" Highlighted yank duration
+let g:highlightedyank_highlight_duration = 300
+
+" --- 11. FILETYPE-SPECIFIC SETTINGS ---
+augroup ai_review_filetypes
+    autocmd!
+    " YAML: show column guide for alignment
+    autocmd FileType yaml setlocal cursorcolumn
+    " Shell: 4-space indent
+    autocmd FileType sh,bash setlocal tabstop=4 shiftwidth=4
+    " Terraform: 2-space indent
+    autocmd FileType terraform setlocal tabstop=2 shiftwidth=2
+augroup END
+
+" --- 12. AIRLINE INTEGRATION WITH ALE ---
+" Show ALE error/warning counts in the statusline
+let g:airline#extensions#ale#enabled = 1
+
+" --- 7. CUSTOM WELCOMING DASHBOARD & KEYBINDINGS MEMO ---
+function! s:center(text)
+  let l:pad = (&columns - strwidth(a:text)) / 2
+  return l:pad > 0 ? repeat(' ', l:pad) . a:text : a:text
+endfunction
+
+function! StartScreen()
+  " Only run if Vim is started with no arguments/files, or if we are re-drawing the dashboard
+  if &filetype != 'startup'
+    if argc() != 0 || line('$') > 1 || getline(1) != '' || &modified
+      return
     endif
+  endif
+
+  " Create a new buffer or use the current one
+  if &filetype != 'startup'
+    enew
+  endif
+
+  setlocal buftype=nofile
+  setlocal bufhidden=wipe
+  setlocal noswapfile
+  setlocal nobuflisted
+  setlocal nonumber
+  setlocal norelativenumber
+  setlocal nocursorline
+  setlocal signcolumn=no
+  setlocal foldcolumn=0
+  setlocal statusline=\ Premium\ IDE\ Startup\ 
+
+  let l:username = $USER
+  if empty(l:username)
+    let l:username = 'Developer'
+  endif
+
+  " Calculate margins for responsive centering
+  let l:width = 62
+  let l:margin = (&columns - l:width) / 2
+  if l:margin < 0
+    let l:margin = 0
+  endif
+  let l:pad = repeat(' ', l:margin)
+
+  let l:lines = []
+  call add(l:lines, '')
+  call add(l:lines, s:center('      _   _ _____ ___  ____  ____        _     _ '))
+  call add(l:lines, s:center('     | \ | | ____/ _ \|  _ \|  _ \      / \   | |'))
+  call add(l:lines, s:center('     |  \| |  _|| | | | |_) | |_) |    / _ \  | |'))
+  call add(l:lines, s:center('     | |\  | |__| |_| |  _ <|  _ <    / ___ \ | |'))
+  call add(l:lines, s:center('     |_| \_|_____\___/|_| \_\_| \_\  /_/   \_\|_|'))
+  call add(l:lines, '')
+  call add(l:lines, s:center('      Classic Vim 9.0 • AI Code Review Workstation'))
+  call add(l:lines, s:center('               Welcome back, ' . l:username . '!'))
+  call add(l:lines, '')
+  call add(l:lines, s:center('  [i] New File       [p] Fuzzy Find (FZF)   [f] Explorer       [q] Quit'))
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  ⚡ GENERAL & WINDOW NAVIGATION')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  <Space> h      : Clear Search Highlights')
+  call add(l:lines, l:pad . '  Ctrl + h/j/k/l : Navigate Split Windows')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  📂 FILE EXPLORER & FUZZY SEARCH (FZF & Ripgrep)')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  Ctrl + n       : Toggle NERDTree sidebar')
+  call add(l:lines, l:pad . '  <Space> nf     : Find current file in NERDTree')
+  call add(l:lines, l:pad . '  Ctrl + p       : Blazing-fast File Search (FZF)')
+  call add(l:lines, l:pad . '  <Space> pf     : Fuzzy find files (FZF)')
+  call add(l:lines, l:pad . '  <Space> pb     : Fuzzy find open buffers (FZF)')
+  call add(l:lines, l:pad . '  <Space> pr     : Interactive text search in files (Ripgrep)')
+  call add(l:lines, l:pad . '  <Space> rg     : Search word under cursor (Ripgrep)')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  \U0001f50d AI CODE REVIEW WORKFLOW')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  <Space> rs     : Start Review (show changed files)')
+  call add(l:lines, l:pad . '  <Space> rf     : Fold unchanged (show ONLY diffs)')
+  call add(l:lines, l:pad . '  <Space> re     : All lint errors -> quickfix')
+  call add(l:lines, l:pad . '  <Space> rd     : Side-by-side diff vs HEAD')
+  call add(l:lines, l:pad . '  <Space> rm     : Side-by-side diff vs main')
+  call add(l:lines, l:pad . '  <Space> rc     : Close diff view')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  \ue725 GIT HUNK REVIEW (Accept/Reject AI Changes)')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  ]c / [c        : Next / Prev changed hunk')
+  call add(l:lines, l:pad . '  <Space> hp     : Preview hunk change')
+  call add(l:lines, l:pad . '  <Space> hs     : Accept (stage) hunk')
+  call add(l:lines, l:pad . '  <Space> hu     : Reject (revert) hunk')
+  call add(l:lines, l:pad . '  <Space> hf     : Fold unchanged (show only AI changes)')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  ⚡ LINTING (ALE) — Catches AI Mistakes')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  ]e / [e        : Next / Prev lint error')
+  call add(l:lines, l:pad . '  <Space> ed     : Show error detail')
+  call add(l:lines, l:pad . '  <Space> af     : Auto-fix current file')
+  call add(l:lines, l:pad . '  <Space> el     : All errors -> quickfix list')
+  call add(l:lines, l:pad . '  <Space> at     : Toggle ALE on/off')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  🛠 LSP / IDE FEATURES (CoC.nvim)')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  gd / gy        : Go to Definition / Type Definition')
+  call add(l:lines, l:pad . '  gi / gr        : Go to Implementation / References')
+  call add(l:lines, l:pad . '  K              : Show Documentation / Hover doc')
+  call add(l:lines, l:pad . '  [g / ]g        : Prev / Next Diagnostic (Error)')
+  call add(l:lines, l:pad . '  <Space> f      : Format selected code / buffer')
+  call add(l:lines, '')
+  call add(l:lines, l:pad . '  🏗 TERRAFORM')
+  call add(l:lines, l:pad . '  ──────────────────────────────────────────────────────────')
+  call add(l:lines, l:pad . '  <Space> tv     : terraform validate')
+  call add(l:lines, l:pad . '  <Space> tf     : terraform fmt')
+  call add(l:lines, l:pad . '  <Space> tp     : terraform plan (preview)')
+  call add(l:lines, '')
+
+  " Render lines
+  setlocal modifiable
+  silent %delete _
+  call setline(1, l:lines)
+  setlocal nomodifiable
+  setlocal nomodified
+
+  " Keybindings inside the start screen buffer
+  nnoremap <buffer> <silent> e :enew<CR>
+  nnoremap <buffer> <silent> i :enew <bar> startinsert<CR>
+  nnoremap <buffer> <silent> a :enew <bar> startinsert<CR>
+  nnoremap <buffer> <silent> o :enew <bar> startinsert<CR>
+  if executable('fzf')
+    nnoremap <buffer> <silent> p :Files<CR>
+  else
+    nnoremap <buffer> <silent> p :CtrlP<CR>
+  endif
+  nnoremap <buffer> <silent> f :NERDTreeToggle<CR>
+  nnoremap <buffer> <silent> q :q<CR>
+
+  " Syntax highlighting for startup screen
+  setlocal filetype=startup
+  syntax match StartupLogo /\%>1l\%<7l.*/
+  syntax match StartupTitle /\%7l.*/
+  syntax match StartupWelcome /\%8l.*/
+  syntax match StartupShortcut /\[[a-z]\]/
+  syntax match StartupGroup /^\s*\(⚡\|📂\|\|🛠\).*/
+  syntax match StartupKey /^\s*[^:]*\ze:/
+  syntax match StartupSeparator /───*/
+
+  highlight default link StartupLogo String
+  highlight default link StartupTitle Title
+  highlight default link StartupWelcome Identifier
+  highlight default link StartupShortcut Special
+  highlight default link StartupGroup Type
+  highlight default link StartupKey Function
+  highlight default link StartupSeparator Comment
 endfunction
 
-" Comment/uncomment lines in YAML
-nnoremap <leader>cc :call ToggleYAMLComment()<CR>
-vnoremap <leader>cc :call ToggleYAMLComment()<CR>
-
-" Quick template insertion for common files
-nnoremap <leader>tkf :read ~/.vim/templates/main.tf<CR>
-nnoremap <leader>tky :read ~/.vim/templates/deployment.yaml<CR>
-nnoremap <leader>tkd :read ~/.vim/templates/Dockerfile<CR>
-
-" ============================================================================
-" STATUS LINE ENHANCEMENT FOR DEVOPS
-" ============================================================================
-
-" Enhanced status line showing file type and git branch (if available)
-set statusline=
-set statusline+=%f                          " File path
-set statusline+=%m                          " Modified flag
-set statusline+=%r                          " Read-only flag
-set statusline+=%h                          " Help buffer flag
-set statusline+=%w                          " Preview window flag
-set statusline+=%=                          " Right align from here
-set statusline+=%y                          " File type
-set statusline+=\ [%{&ff}]                 " File format
-set statusline+=\ [%{&fenc}]               " File encoding
-set statusline+=\ %p%%                     " Percentage through file
-set statusline+=\ %l:%c                    " Line:Column
-set statusline+=\ %L                       " Total lines
-
-" ============================================================================
-" QUICK COMMANDS FOR INFRASTRUCTURE WORK
-" ============================================================================
-
-" Quick commands for common DevOps tasks
-command! TFPlan !terraform plan
-command! TFApply !terraform apply
-command! TFValidate !terraform validate
-command! TFFmt !terraform fmt
-command! KApply !kubectl apply -f %
-command! KDelete !kubectl delete -f %
-command! KDryRun !kubectl apply --dry-run=client -f %
-command! DockerBuild !docker build -t %:t:r .
-command! ComposeUp !docker-compose up -d
-command! ComposeDown !docker-compose down
+autocmd VimEnter * call StartScreen()
+autocmd VimResized * if &filetype == 'startup' | call StartScreen() | endif
