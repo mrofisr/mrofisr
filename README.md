@@ -61,7 +61,7 @@ I am a DevOps and Software Engineer based in Indonesia. I specialize in cloud in
   A beautiful, modern, and interactive Islamic wedding invitation website.
 
 * **[jawara.cloud](https://jawara.cloud)**
-  My personal project for R&D Lab exploring the future of tech.
+  Jawara Cloud is a R&D Labs that exploring the future of tech.
 
 ---
 
