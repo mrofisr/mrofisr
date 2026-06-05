@@ -60,6 +60,9 @@ I am a DevOps and Software Engineer based in Indonesia. I specialize in cloud in
 * **[Sakeenah](https://sakeenah.site)**
   A beautiful, modern, and interactive Islamic wedding invitation website.
 
+* **[jawara.cloud](https://jawara.cloud)**
+  My personal project for R&D Lab exploring the future of tech.
+
 ---
 
 ### Connect
